@@ -1,0 +1,26 @@
+sequenceDiagram
+  participant U as Browser
+  participant N as nginx
+  participant L as Liberty monolith
+  participant D as Db2
+  participant C as Quarkus catalog
+  participant P as Postgres
+  participant K as Kafka
+
+  U->>N: GET Customer
+  N->>L: /jaxrs/Customer
+  L->>D: load CUSTOMER + address
+  D-->>L: PII row
+  L-->>U: customer JSON
+
+  U->>N: GET Product?categoryId=
+  N->>C: strangler route
+  C->>P: product query
+  P-->>C: catalog rows
+  C-->>U: products JSON
+
+  U->>N: PUT Product price
+  N->>C: update
+  C->>P: persist price
+  C->>K: product-price-updated
+  K-->>C: ProductPriceChanged consumer

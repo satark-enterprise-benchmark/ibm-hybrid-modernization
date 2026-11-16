@@ -1,0 +1,14 @@
+flowchart LR
+  UI[frontend-dojo] --> NG[proxy nginx]
+  NG --> OL[monolith-open-liberty]
+  NG --> CAT[catalog Quarkus]
+  OL --> DB2[(Db2)]
+  CAT --> PG[(Postgres)]
+  CAT --> KF[Kafka]
+  ML[monolith-liberty] --> DB2
+  SCRIPTS[scripts-docker] --> NG
+  SCRIPTS --> OL
+  SCRIPTS --> CAT
+  SCRIPTS --> DB2
+  SCRIPTS --> PG
+  SCRIPTS --> KF

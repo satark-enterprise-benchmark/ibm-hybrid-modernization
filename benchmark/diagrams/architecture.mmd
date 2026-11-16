@@ -1,0 +1,24 @@
+flowchart TB
+  subgraph clients [Client]
+    UI[Dojo storefront UI]
+  end
+
+  NG[nginx proxy]
+
+  subgraph modernized [Strangler path]
+    CAT[Quarkus catalog]
+    PG[(PostgreSQL)]
+    KF[Kafka]
+  end
+
+  subgraph legacy [Monolith path]
+    LIB[Liberty / Open Liberty]
+    DB2[(Db2 orderdb)]
+  end
+
+  UI --> NG
+  NG -->|Category Product| CAT
+  NG -->|Customer Orders other| LIB
+  CAT --> PG
+  CAT --> KF
+  LIB --> DB2

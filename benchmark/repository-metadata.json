@@ -1,0 +1,30 @@
+{
+  "name": "ibm-hybrid-modernization",
+  "org_url": "https://github.com/satark-enterprise-benchmark/ibm-hybrid-modernization",
+  "upstream_url": "https://github.com/yeekangc/application-modernization-javaee-quarkus",
+  "original_requested_upstream": "https://github.com/IBM/application-modernization-javaee-quarkus",
+  "actual_fork_source": "https://github.com/yeekangc/application-modernization-javaee-quarkus",
+  "default_branch": "master",
+  "baseline_sha": "fba9759fae18697a65d021a97a90a393f7a68625",
+  "acquisition_date": "2026-11-16T21:10:24Z",
+  "license": "Apache-2.0",
+  "maintained_status": "incomplete-wip-mirror",
+  "docker_compose_available": true,
+  "messaging": ["Apache Kafka (Strimzi image 0.19.0 / Kafka 2.5.0)", "Zookeeper", "SmallRye Reactive Messaging Kafka", "Vert.x Kafka producer"],
+  "databases": ["IBM Db2 (orderdb)", "PostgreSQL (Quarkus catalog)"],
+  "languages": ["Java (Java EE / Jakarta on Liberty)", "Java (Quarkus 1.1.1)", "SQL", "JavaScript (Dojo frontend assets)", "Bash", "Nginx config"],
+  "architecture_pattern": "legacy-monolith-plus-strangler-catalog-coexistence",
+  "benchmark_purpose": "Enterprise PII benchmark for hybrid modernization: customer/order PII in a Java EE monolith on Db2 coexisting with a Quarkus catalog strangler on Postgres + Kafka price events; migration and dual-store PII challenges.",
+  "notes": "Official IBM/application-modernization-javaee-quarkus returned 404; user-approved fallback to yeekangc fork. Mirror is an incomplete WIP of the original sample. Root README states Work in Progress. Do not assume feature parity with any IBM-published demo.",
+  "inaccessible_items": [
+    "Official IBM GitHub repository (404 at acquisition time)",
+    "Full docker image builds and compose startup not executed in Phase 1",
+    "Maven not installed on inspection host",
+    "Usable system Java runtime not available on inspection host",
+    "Transformation Advisor artifacts referenced in documentation/ are local to another machine — not in this clone",
+    "Dojo toolkit install via scripts/install-dojo.sh not executed",
+    "Db2 container privileges and LICENSE acceptance not validated",
+    "scripts-docker/docker-compose.yml appears inconsistent with the Customer Order Services sample (articles service)",
+    "Complete upstream documentation set unavailable (WIP README)"
+  ]
+}
